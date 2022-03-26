@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.3",
+    "rae-api": "^1.5.0",
+    "request": "^2.88.2"
+  }
+}
