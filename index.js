@@ -51,7 +51,7 @@ app.get("/gameses", function (req, res) {
 app.get("/getWord", async (req, res) => {
 	const word = await getWord();
 	res.status(200).send(encrypt(word));
-	await doRequest("https://wordleapi.nicohalpe.com.ar/newgame");
+	await doRequest("https://wordlestats.nicohalpe.com.ar/newgame");
 	/* db.get("count").then((value) => {
 		if (value) {
 			db.set("count", value + 1);
