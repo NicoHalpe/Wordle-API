@@ -70,15 +70,12 @@ app.get("/checkWord", async (req, res) => {
 	try {
 		search = await rae.searchWord(req.query.word);
 	} catch {
-		const result = await doRequest(
-			"https://palabras-aleatorias-public-api.herokuapp.com/palabras-aleatorias?Word=" +
-				req.query.word
-		);
-		if (JSON.parse(result).body[0]) res.sendStatus(200);
+		const exists = words.includes(req.query.word);
+		if (exists) res.sendStatus(200);
 		else res.sendStatus(201);
 		return;
 	}
-	if (!search) return;
+	if (!search) return res.sendStatus(201);
 	if (req.query.mode === "1") {
 		if (
 			search
