@@ -93,11 +93,8 @@ app.get("/checkWord", async (req, res) => {
 		if (search.getRes()[0] && !search.getApprox()) {
 			res.sendStatus(200);
 		} else {
-			const result = await doRequest(
-				"https://palabras-aleatorias-public-api.herokuapp.com/palabras-aleatorias?Word=" +
-					req.query.word
-			);
-			if (JSON.parse(result).body[0]) res.sendStatus(200);
+			const exists = words.includes(req.query.word);
+			if (exists) res.sendStatus(200);
 			else res.sendStatus(201);
 		}
 	}
