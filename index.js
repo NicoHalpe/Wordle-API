@@ -7,6 +7,7 @@ const rae = new RAE();
 /* const Database = require("@replit/database")
 const db = new Database() */
 const path = require("path");
+const words = require("./words").default;
 
 process.on("uncaughtException", function (err) {
 	console.error(err);
@@ -107,10 +108,12 @@ app.listen(3000, () => {
 });
 
 const getWord = async () => {
-	const res = await doRequest(
+	const random = Math.floor(Math.random() * words.length);
+	return words[random].toLowerCase();
+	/* const res = await doRequest(
 		"https://palabras-aleatorias-public-api.herokuapp.com/random-by-length?length=5"
 	);
-	return JSON.parse(res).body.Word;
+	return JSON.parse(res).body.Word; */
 };
 
 function doRequest(url) {
