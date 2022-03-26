@@ -1,0 +1,56 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: sans-serif;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-size: clamp(2rem, 2vw, 3rem);
+}
+
+.flip-clock-wrapper {
+	width: fit-content;
+	display: flex;
+}
+
+.flip-clock-wrapper ul {
+	margin: 5px;
+}
+
+.fast .flip-clock-wrapper ul.play li.flip-clock-active,
+.fast .flip-clock-wrapper ul.play li.flip-clock-active .down,
+.fast .flip-clock-wrapper ul.play li.flip-clock-before .up,
+.fast .flip-clock-wrapper ul.play li.flip-clock-before .up .shadow,
+.fast .flip-clock-wrapper ul.play li.flip-clock-active .up .shadow,
+.fast .flip-clock-wrapper ul.play li.flip-clock-before .down .shadow,
+.fast .flip-clock-wrapper ul.play li.flip-clock-active .down .shadow {
+	animation-delay: 0s;
+	animation-duration: 0s;
+}
+
+@media screen and (max-width: 700px) {
+	.flip-clock-wrapper {
+		transform: scale(0.8);
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.flip-clock-wrapper {
+		transform: scale(0.6);
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.flip-clock-wrapper {
+		transform: scale(0.5);
+	}
+}
