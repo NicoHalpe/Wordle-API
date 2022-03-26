@@ -51,6 +51,7 @@ app.get("/gameses", function (req, res) {
 app.get("/getWord", async (req, res) => {
 	const word = await getWord();
 	res.status(200).send(encrypt(word));
+	await doRequest("https://wordleapi.nicohalpe.com.ar/newgame");
 	/* db.get("count").then((value) => {
 		if (value) {
 			db.set("count", value + 1);
@@ -107,10 +108,6 @@ app.listen(3000, () => {
 const getWord = async () => {
 	const random = Math.floor(Math.random() * words.length);
 	return words[random].toLowerCase();
-	/* const res = await doRequest(
-		"https://palabras-aleatorias-public-api.herokuapp.com/random-by-length?length=5"
-	);
-	return JSON.parse(res).body.Word; */
 };
 
 function doRequest(url) {
