@@ -85,6 +85,8 @@ app.get("/checkWord", async (req, res) => {
 				.normalize() === req.query.word
 		) {
 			res.sendStatus(200);
+		} else {
+			res.sendStatus(201);
 		}
 	} else {
 		if (search.getRes()[0] && !search.getApprox()) {
