@@ -70,8 +70,7 @@ app.get("/checkWord", async (req, res) => {
 	try {
 		search = await rae.searchWord(req.query.word);
 	} catch {
-		const exists = words.includes(req.query.word.toUpperCase());
-		if (exists) res.sendStatus(200);
+		if (words[req.query.word.toUpperCase()]) res.sendStatus(200);
 		else res.sendStatus(201);
 		return;
 	}
@@ -91,8 +90,7 @@ app.get("/checkWord", async (req, res) => {
 		if (search.getRes()[0] && !search.getApprox()) {
 			res.sendStatus(200);
 		} else {
-			const exists = words.includes(req.query.word.toUpperCase());
-			if (exists) res.sendStatus(200);
+			if (words[req.query.word.toUpperCase()]) res.sendStatus(200);
 			else res.sendStatus(201);
 		}
 	}
