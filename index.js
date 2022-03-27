@@ -86,7 +86,8 @@ app.get("/checkWord", async (req, res) => {
 		) {
 			res.sendStatus(200);
 		} else {
-			res.sendStatus(201);
+			if (words[req.query.word.toUpperCase()]) res.sendStatus(200);
+			else res.sendStatus(201);
 		}
 	} else {
 		if (search.getRes()[0] && !search.getApprox()) {
