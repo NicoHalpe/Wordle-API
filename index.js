@@ -101,8 +101,9 @@ app.listen(3000, () => {
 });
 
 const getWord = async () => {
-	const random = Math.floor(Math.random() * words.length);
-	return Object.keys(words)[random].toLowerCase();
+	const wrs = Object.keys(words);
+	const random = Math.floor(Math.random() * wrs.length);
+	return wrs[random].toLowerCase();
 };
 
 function doRequest(url) {
