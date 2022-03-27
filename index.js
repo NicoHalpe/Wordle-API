@@ -102,7 +102,7 @@ app.listen(3000, () => {
 
 const getWord = async () => {
 	const random = Math.floor(Math.random() * words.length);
-	return words[random].toLowerCase();
+	return Object.keys(words)[random].toLowerCase();
 };
 
 function doRequest(url) {
