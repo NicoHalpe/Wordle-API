@@ -9,7 +9,7 @@ const db = new Database() */
 import { join, dirname } from "path";
 import words from "./words.js";
 import { fileURLToPath } from "url";
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -104,7 +104,7 @@ app.get("/checkWord", async (req, res) => {
 	}
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 	console.log("server started");
 });
 
