@@ -1,13 +1,18 @@
-const express = require("express");
-const request = require("request");
-const crypto = require("crypto");
-const cors = require("cors");
-const { RAE } = require("rae-api");
+import express from "express";
+import request from "request";
+import crypto from "crypto";
+import cors from "cors";
+import { RAE } from "rae-api";
 const rae = new RAE();
 /* const Database = require("@replit/database")
 const db = new Database() */
-const path = require("path");
-const words = require("./words").default;
+import { join, dirname } from "path";
+import words from "./words.js";
+import { fileURLToPath } from "url";
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 process.on("uncaughtException", function (err) {
 	console.error(err);
@@ -21,10 +26,10 @@ app.get("/", (req, res) => {
 	res.sendStatus(200);
 });
 
-app.use(express.static(path.join(__dirname, "./games")));
+app.use(express.static(join(__dirname, "./games")));
 
 app.get("/games", (req, res) => {
-	res.sendFile(path.join(__dirname, "/games/games.html"));
+	res.sendFile(join(__dirname, "/games/games.html"));
 });
 
 let eventsRes = [];
