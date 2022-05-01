@@ -88,12 +88,11 @@ app.get("/checkWord", async (req, res) => {
 				?.getHeader()
 				.normalize("NFD")
 				.replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
-				.normalize() === req.query.word ||
-			wordsnt[req.query.word.toUpperCase()]
+				.normalize() === req.query.word
 		) {
 			res.sendStatus(200);
 		} else {
-			if (words[req.query.word.toUpperCase()]) res.sendStatus(200);
+			if (wordsnt[req.query.word.toUpperCase()]) res.sendStatus(200);
 			else res.sendStatus(201);
 		}
 	} else {
