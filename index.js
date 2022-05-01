@@ -8,6 +8,7 @@ const rae = new RAE();
 const db = new Database() */
 import { join, dirname } from "path";
 import words from "./words.js";
+import wordsnt from "./wordsnt.js";
 import { fileURLToPath } from "url";
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -87,7 +88,8 @@ app.get("/checkWord", async (req, res) => {
 				?.getHeader()
 				.normalize("NFD")
 				.replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
-				.normalize() === req.query.word
+				.normalize() === req.query.word ||
+			wordsnt[req.query.word.toUpperCase()]
 		) {
 			res.sendStatus(200);
 		} else {
