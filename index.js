@@ -88,7 +88,9 @@ app.get("/checkWord", async (req, res) => {
 				?.getHeader()
 				.normalize("NFD")
 				.replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
-				.normalize() === req.query.word
+				.normalize()
+				.split(",")
+				.includes(req.query.word)
 		) {
 			res.sendStatus(200);
 		} else {
